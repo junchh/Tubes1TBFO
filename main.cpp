@@ -124,8 +124,35 @@ void generateValidCommand(){
     change[18].funChange = 10;
 }
 
-int getNextState(string cmd, int * player, int current){
+bool isActionValid(state current, transition x){
+    int a = current.hygiene+x.hygieneChange;
+    int b = current.energy+x.energyChange;
+    int c = current.fun+x.fun;
+    return (a >= 0 && a <= 15) && (b >= 0 && b <= 15) && (c >= 0 && c <= 15);
+}
 
+void showStatus(state player){
+    cout << "Hygiene = " << player.hygiene << endl;
+    cout << "Energy = " << player.energy << endl;
+    cout << "Fun = " << player.fun << endl;
+}
+
+void doTransition(state * player, transition x){
+    if(isActionValid(*player, x)){
+        (*player).hygiene += x.hygieneChange;
+        (*player).energy += x.energyChange;
+        (*player).fun += x.funChange;
+        showStatus(*player);
+    } else {
+        cout << "Aksi tidak valid" << endl;
+    }
+}
+
+int getCurrentState(state player){
+    int a = player.hygiene / 5;
+    int b = player.energy / 5;
+    int c = player.fun / 5;
+    return getIndex(a, b, c);
 }
 
 int main() {
