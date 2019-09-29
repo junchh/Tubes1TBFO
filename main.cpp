@@ -19,7 +19,16 @@ struct state {
     int fun;
 };
 
+struct transition {
+    int hygieneChange;
+    int energyChange;
+    int funChange;
+};
+
 state playerState[65];
+map<string, int> commandString;
+transition change[19];
+
 
 int getIndex(int a, int b, int c){
     //generate index dengan basis 4
@@ -40,12 +49,36 @@ void generateState(){
     }
 }
 
+void generateValidCommand(){
+    commandString["Tidur Siang"] = 1;
+    change[1].hygieneChange = 0;
+    change[1].energyChange = 10;
+    change[1].funChange = 0;
+    commandString["Tidur Malam"] = 2;
+    commandString["Makan Hamburger"] = 3;
+    commandString["Makan Pizza"] = 4;
+    commandString["Makan Steak and Beans"] = 5;
+    commandString["Minum Air"] = 6;
+    commandString["Minum Kopi"] = 7;
+    commandString["Minum Jus"] = 8;
+    commandString["Buang Air Kecil"] = 9;
+    commandString["Buang Air Besar"] = 10;
+    commandString["Bersosialisasi ke Kafe"] = 11;
+    commandString["Bermain Media Sosial"] = 12;
+    commandString["Bermain komputer"] = 13;
+    commandString["Mandi"] = 14;
+    commandString["Cuci Tangan"] = 15;
+    commandString["Mendengarkan Musik di Radio"] = 16;
+    commandString["Membaca Koran"] = 17;
+    commandString["Membaca Novel"] = 18;
+}
+
 int getNextState(string cmd, int * player, int current){
 
 }
 
 int main() {
     generateState();
-    c
+    
     return 0;
 }
