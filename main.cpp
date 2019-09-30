@@ -127,7 +127,7 @@ void generateValidCommand(){
 bool isActionValid(state current, transition x){
     int a = current.hygiene+x.hygieneChange;
     int b = current.energy+x.energyChange;
-    int c = current.fun+x.fun;
+    int c = current.fun+x.funChange;
     return (a >= 0 && a <= 15) && (b >= 0 && b <= 15) && (c >= 0 && c <= 15);
 }
 
@@ -155,8 +155,25 @@ int getCurrentState(state player){
     return getIndex(a, b, c);
 }
 
+bool IsFinalState (state player) {
+    bool a = (player.energy == playerState[0].energy && player.fun == playerState[0].fun && player.hygiene == playerState[0].hygiene);
+    bool b = (player.energy == playerState[63].energy && player.fun == playerState[63].fun && player.hygiene == playerState[63].hygiene);
+    return (a || b);
+}
+
+
 int main() {
+    state player;
+    char str[100];
     generateState();
-    
+    player.hygiene = 0;
+    player.energy = 10;
+    player.fun = 0;
+    generateValidCommand();
+    cout << "Masukkan string :" ; 
+    cin.get(str, 100);
+    /*while (!IsFinalState(player)) {
+        
+    }*/
     return 0;
 }
