@@ -7,6 +7,7 @@
 ** @kelas   : IF2124 K-02
 **/
 #include <bits/stdc++.h>
+#include <string>
 
 using namespace std;
 
@@ -164,16 +165,17 @@ bool IsFinalState (state player) {
 
 int main() {
     state player;
-    char str[100];
+    string str;
     generateState();
     player.hygiene = 0;
     player.energy = 10;
     player.fun = 0;
     generateValidCommand();
-    cout << "Masukkan string :" ; 
-    cin.get(str, 100);
-    /*while (!IsFinalState(player)) {
-        
-    }*/
+    showStatus(player);
+    while (!IsFinalState(player)) {
+        cout << "Masukkan aksi : ";
+        getline(cin, str);
+        doTransition(&player, change[commandString[str]]);
+    }
     return 0;
 }
