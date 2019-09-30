@@ -167,15 +167,35 @@ int main() {
     state player;
     string str;
     generateState();
-    player.hygiene = 0;
+    generateValidCommand();
+    cout << "State";
+    for(int i = 1; i <= 18; i++){
+        cout << "," << i;
+    } 
+    cout << endl;
+    for(int i = 0; i <= 63; i++){
+        cout << "q" << i;
+        for(int j = 1; j <= 18; j++){
+            if(isActionValid(playerState[i], change[j])){
+                int hbaru = playerState[i].hygiene + change[j].hygieneChange;
+                int ebaru = playerState[i].energy + change[j].energyChange;
+                int fbaru = playerState[i].fun + change[j].funChange;
+                cout << ",q" << getIndex(hbaru / 5, ebaru / 5, fbaru / 5);
+            } else {
+                cout << ",q" << i;
+            }
+        }
+        cout << endl;
+    }
+    /*player.hygiene = 0;
     player.energy = 10;
     player.fun = 0;
     generateValidCommand();
-    showStatus(player);
-    while (!IsFinalState(player)) {
+    showStatus(player);*/
+    /*while (!IsFinalState(player)) {
         cout << "Masukkan aksi : ";
         getline(cin, str);
         doTransition(&player, change[commandString[str]]);
-    }
+    }*/
     return 0;
 }
