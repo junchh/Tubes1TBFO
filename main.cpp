@@ -33,18 +33,18 @@ transition change[19];
 
 int getIndex(int a, int b, int c){
     //generate index dengan basis 4
-    return 16*a+4*b+c;
+    return 16*a + 4*b + c;
 }
 
 void generateState(){
-    for(int i=0;i<=3;i++){
-        for(int j=0;j<=3;j++){
-            for(int k=0;k<=3;k++){
+    for(int i = 0; i <= 3; i++){
+        for(int j = 0; j <= 3; j++){
+            for(int k = 0; k <= 3; k++){
                 state temp;
                 temp.hygiene = 5*i;
                 temp.energy = 5*j;
                 temp.fun = 5*k;
-                playerState[getIndex(i, j, k)]=temp;
+                playerState[getIndex(i, j, k)] = temp;
             }
         }
     }
@@ -126,9 +126,9 @@ void generateValidCommand(){
 }
 
 bool isActionValid(state current, transition x){
-    int a = current.hygiene+x.hygieneChange;
-    int b = current.energy+x.energyChange;
-    int c = current.fun+x.funChange;
+    int a = current.hygiene + x.hygieneChange;
+    int b = current.energy + x.energyChange;
+    int c = current.fun + x.funChange;
     return (a >= 0 && a <= 15) && (b >= 0 && b <= 15) && (c >= 0 && c <= 15);
 }
 
