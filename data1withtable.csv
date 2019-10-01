@@ -1,4 +1,4 @@
-State | Aksi,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18
+State,Tidur Siang,Tidur Malam,Makan Hamburger,Makan Pizza,Makan Steak and Beans,Minum Air,Minum Kopi,Minum Jus,Buang Air Kecil,Buang Air Besar,Bersosialisasi ke Kafe,Bermain Media Sosial,Bermain Komputer,Mandi,Cuci Tangan,Mendengarkan Musik di Radio,Membaca Koran,Membaca Novel
 *q0,q8,q12,q4,q8,q12,q0,q0,q0,q16,q0,q0,q0,q0,q0,q16,q0,q0,q0
 q1,q9,q13,q5,q9,q13,q1,q1,q1,q17,q1,q1,q1,q1,q1,q17,q1,q1,q1
 q2,q10,q14,q6,q10,q14,q2,q2,q2,q18,q2,q2,q2,q2,q2,q18,q2,q2,q2

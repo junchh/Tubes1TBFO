@@ -29,6 +29,7 @@ struct transition {
 state playerState[65];
 map<string, int> commandString;
 transition change[19];
+string stringCommand[19];
 
 
 int getIndex(int a, int b, int c){
@@ -125,6 +126,27 @@ void generateValidCommand(){
     change[18].funChange = 10;
 }
 
+void inverseValidCommand () {
+    stringCommand[1] = "Tidur Siang";
+    stringCommand[2] = "Tidur Malam";
+    stringCommand[3] = "Makan Hamburger";
+    stringCommand[4] = "Makan Pizza";
+    stringCommand[5] = "Makan Steak and Beans";
+    stringCommand[6] = "Minum Air";
+    stringCommand[7] = "Minum Kopi";
+    stringCommand[8] = "Minum Jus";
+    stringCommand[9] = "Buang Air Kecil";
+    stringCommand[10] = "Buang Air Besar";
+    stringCommand[11] = "Bersosialisasi ke Kafe";
+    stringCommand[12] = "Bermain Media Sosial";
+    stringCommand[13] = "Bermain Komputer";
+    stringCommand[14] = "Mandi";
+    stringCommand[15] = "Cuci Tangan";
+    stringCommand[16] = "Mendengarkan Musik di Radio";
+    stringCommand[17] = "Membaca Koran";
+    stringCommand[18] = "Membaca Novel";
+}
+
 bool isActionValid(state current, transition x){
     int a = current.hygiene + x.hygieneChange;
     int b = current.energy + x.energyChange;
@@ -165,10 +187,18 @@ bool IsFinalState (state player) {
 
 int main() {
     state player;
-    string str;
+    string str,nama;
     generateState();
     generateValidCommand();
-    cout << "State";
+    inverseValidCommand();
+    cout << "Selamat datang di The Sims Simulator. Pertama-tama, siapa namamu?" << endl;
+    cout << "Nama :";
+    getline(cin,nama);
+    cout << "Halo, selamat datang " << nama << "!" << endl;
+    /*for (int i = 0;i<=63;i++) {
+        cout << "q" << i << " " << playerState[i].hygiene << " " << playerState[i].energy << " " << playerState[i].fun << endl ;
+    }*/
+    /*cout << "State";
     for(int i = 1; i <= 18; i++){
         cout << "," << i;
     } 
@@ -186,16 +216,16 @@ int main() {
             }
         }
         cout << endl;
-    }
-    /*player.hygiene = 0;
+    }*/
+    player.hygiene = 0;
     player.energy = 10;
     player.fun = 0;
-    generateValidCommand();
-    showStatus(player);*/
-    /*while (!IsFinalState(player)) {
+    showStatus(player);
+    cout << "Ah, enaknya habis bangunt tidur. Enaknya ngapain ya?" << endl;
+    while (!IsFinalState(player)) {
         cout << "Masukkan aksi : ";
         getline(cin, str);
         doTransition(&player, change[commandString[str]]);
-    }*/
+    }
     return 0;
 }
