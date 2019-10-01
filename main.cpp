@@ -249,6 +249,7 @@ int main() {
     while (!IsFinalState(player)) {
         cout << "Masukkan aksi : ";
         getline(cin, str);
+        str = stringToLower(str);
         doTransition(&player, change[commandString[str]]);
     }
     if (IsStateEqual(player,playerState[0])) {
