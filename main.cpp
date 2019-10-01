@@ -207,59 +207,95 @@ string stringToLower(string s){
 
 
 int main() {
-    state player;
-    string str,nama;
-    generateState();
-    generateValidCommand();
-    inverseValidCommand();
-    system("CLS");
-    cout << "Selamat datang di The Sims Simulator. Pertama-tama, siapa namamu?" << endl;
-    cout << "Nama : ";
-    getline(cin,nama);
-    system("CLS");
-    cout << "Halo, selamat datang " << nama << "!" << endl;
-    /*for (int i = 0;i<=63;i++) {
-        cout << "q" << i << " " << playerState[i].hygiene << " " << playerState[i].energy << " " << playerState[i].fun << endl ;
-    }*/
-    /*cout << "State";
-    for(int i = 1; i <= 18; i++){
-        cout << "," << i;
-    } 
-    cout << endl;
-    for(int i = 0; i <= 63; i++){
-        cout << "q" << i;
-        for(int j = 1; j <= 18; j++){
-            if(isActionValid(playerState[i], change[j])){
-                int hbaru = playerState[i].hygiene + change[j].hygieneChange;
-                int ebaru = playerState[i].energy + change[j].energyChange;
-                int fbaru = playerState[i].fun + change[j].funChange;
-                cout << ",q" << getIndex(hbaru / 5, ebaru / 5, fbaru / 5);
-            } else {
-                cout << ",q" << i;
+    cout << "--------------------------------------------------------------" << endl;
+    cout << "|                                                            |" << endl;
+    cout << "|                                                            |" << endl;
+    cout << "|                     The Sims Simulator                     |" << endl;
+    cout << "|                             By                             |" << endl;
+    cout << "|                         Cisitu0427                         |" << endl;
+    cout << "|                                                            |" << endl;
+    cout << "|                                                            |" << endl;
+    cout << "--------------------------------------------------------------" << endl;
+    cout << "Start game? (Y/N) ";
+    char k;
+    do {
+        cin >> k;
+        if(k  != 'Y' && k != 'N'){
+            cout << "Start game? (Y/N) ";
+        }
+    } while (k != 'Y' && k != 'N');
+    if(k == 'N'){
+        cout << "terima kasih sudah mencoba program kami!" << endl;
+    } else {
+        int state=1;
+        do {
+            cin.ignore();
+            state player;
+            string str,nama;
+            generateState();
+            generateValidCommand();
+            inverseValidCommand();
+            //system("CLS");
+            cout << "Selamat datang di The Sims Simulator. Pertama-tama, siapa namamu?" << endl;
+            cout << "Nama : ";
+            getline(cin,nama);
+            system("CLS");
+            cout << "Halo, selamat datang " << nama << "!" << endl;
+            /*for (int i = 0;i<=63;i++) {
+                cout << "q" << i << " " << playerState[i].hygiene << " " << playerState[i].energy << " " << playerState[i].fun << endl ;
+            }*/
+            /*cout << "State";
+            for(int i = 1; i <= 18; i++){
+                cout << "," << i;
+            } 
+            cout << endl;
+            for(int i = 0; i <= 63; i++){
+                cout << "q" << i;
+                for(int j = 1; j <= 18; j++){
+                    if(isActionValid(playerState[i], change[j])){
+                        int hbaru = playerState[i].hygiene + change[j].hygieneChange;
+                        int ebaru = playerState[i].energy + change[j].energyChange;
+                        int fbaru = playerState[i].fun + change[j].funChange;
+                        cout << ",q" << getIndex(hbaru / 5, ebaru / 5, fbaru / 5);
+                    } else {
+                        cout << ",q" << i;
+                    }
+                }
+                cout << endl;
+            }*/
+            player.hygiene = 0;
+            player.energy = 10;
+            player.fun = 0;
+            showStatus(player);
+            cout << "Ah, enaknya habis bangun tidur. Enaknya ngapain ya?" << endl;
+            while (!IsFinalState(player)) {
+                cout << "Masukkan aksi : ";
+                getline(cin, str);
+                str = stringToLower(str);
+                if(commandString.find(str)==commandString.end()){
+                    cout << "Aksi tidak valid" << endl;
+                } else {
+                    doTransition(&player, change[commandString[str]]);
+                }
             }
-        }
-        cout << endl;
-    }*/
-    player.hygiene = 0;
-    player.energy = 10;
-    player.fun = 0;
-    showStatus(player);
-    cout << "Ah, enaknya habis bangun tidur. Enaknya ngapain ya?" << endl;
-    while (!IsFinalState(player)) {
-        cout << "Masukkan aksi : ";
-        getline(cin, str);
-        str = stringToLower(str);
-        if(commandString.find(str)==commandString.end()){
-            cout << "Aksi tidak valid" << endl;
-        } else {
-            doTransition(&player, change[commandString[str]]);
-        }
-    }
-    if (IsStateEqual(player,playerState[0])) {
-        cout << "" << endl;
-    }
-    else if (IsStateEqual(player,playerState[63])) {
-        cout << "Masuk surga, gan!" << endl;
+            if (IsStateEqual(player,playerState[0])) {
+                cout << "yahh anda kalah :(" << endl;
+            }
+            else if (IsStateEqual(player,playerState[63])) {
+                cout << "Selamat anda menang!" << endl;
+            }
+            cout << "apakah anda ingin bermain lagi? (Y/N) ";
+            char t;
+            do {
+                cin >> t;
+                if(t  != 'Y' && t != 'N'){
+                    cout << "apakah anda ingin bermain lagi? (Y/N) ";
+                }
+            } while (t != 'Y' && t != 'N');
+            if(t == 'N'){
+                state = 0;
+            }
+        } while(state == 1);
     }
     return 0;
 }
