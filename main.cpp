@@ -227,7 +227,7 @@ int main() {
     if(k == 'N'){
         cout << "terima kasih sudah mencoba program kami!" << endl;
     } else {
-        int state=1;
+        int stateprogram = 1;
         do {
             cin.ignore();
             state player;
@@ -235,7 +235,7 @@ int main() {
             generateState();
             generateValidCommand();
             inverseValidCommand();
-            //system("CLS");
+            system("CLS");
             cout << "Selamat datang di The Sims Simulator. Pertama-tama, siapa namamu?" << endl;
             cout << "Nama : ";
             getline(cin,nama);
@@ -293,9 +293,9 @@ int main() {
                 }
             } while (t != 'Y' && t != 'N');
             if(t == 'N'){
-                state = 0;
+                stateprogram = 0;
             }
-        } while(state == 1);
+        } while(stateprogram == 1);
     }
     return 0;
 }
