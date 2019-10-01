@@ -53,99 +53,99 @@ void generateState(){
 }
 
 void generateValidCommand(){
-    commandString["Tidur Siang"] = 1;
+    commandString["tidur siang"] = 1;
     change[1].hygieneChange = 0;
     change[1].energyChange = 10;
     change[1].funChange = 0;
-    commandString["Tidur Malam"] = 2;
+    commandString["tidur malam"] = 2;
     change[2].hygieneChange = 0;
     change[2].energyChange = 15;
     change[2].funChange = 0;
-    commandString["Makan Hamburger"] = 3;
+    commandString["makan hamburger"] = 3;
     change[3].hygieneChange = 0;
     change[3].energyChange = 5;
     change[3].funChange = 0;
-    commandString["Makan Pizza"] = 4;
+    commandString["makan pizza"] = 4;
     change[4].hygieneChange = 0;
     change[4].energyChange = 10;
     change[4].funChange = 0;
-    commandString["Makan Steak and Beans"] = 5;
+    commandString["makan steak and beans"] = 5;
     change[5].hygieneChange = 0;
     change[5].energyChange = 15;
     change[5].funChange = 0;
-    commandString["Minum Air"] = 6;
+    commandString["minum air"] = 6;
     change[6].hygieneChange = -5;
     change[6].energyChange = 0;
     change[6].funChange = 0;
-    commandString["Minum Kopi"] = 7;
+    commandString["minum kopi"] = 7;
     change[7].hygieneChange = -10;
     change[7].energyChange = 5;
     change[7].funChange = 0;
-    commandString["Minum Jus"] = 8;
+    commandString["minum jus"] = 8;
     change[8].hygieneChange = -5;
     change[8].energyChange = 10;
     change[8].funChange = 0;
-    commandString["Buang Air Kecil"] = 9;
+    commandString["buang air kecil"] = 9;
     change[9].hygieneChange = 5;
     change[9].energyChange = 0;
     change[9].funChange = 0;
-    commandString["Buang Air Besar"] = 10;
+    commandString["buang air besar"] = 10;
     change[10].hygieneChange = 10;
     change[10].energyChange = -5;
     change[10].funChange = 0;
-    commandString["Bersosialisasi ke Kafe"] = 11;
+    commandString["bersosialisasi ke kafe"] = 11;
     change[11].hygieneChange = -5;
     change[11].energyChange = -10;
     change[11].funChange = 15;
-    commandString["Bermain Media Sosial"] = 12;
+    commandString["bermain media sosial"] = 12;
     change[12].hygieneChange = 0;
     change[12].energyChange = -10;
     change[12].funChange = 10;
-    commandString["Bermain komputer"] = 13;
+    commandString["bermain komputer"] = 13;
     change[13].hygieneChange = 0;
     change[13].energyChange = -10;
     change[13].funChange = 15;
-    commandString["Mandi"] = 14;
+    commandString["mandi"] = 14;
     change[14].hygieneChange = 15;
     change[14].energyChange = -5;
     change[14].funChange = 0;
-    commandString["Cuci Tangan"] = 15;
+    commandString["cuci tangan"] = 15;
     change[15].hygieneChange = 5;
     change[15].energyChange = 0;
     change[15].funChange = 0;
-    commandString["Mendengarkan Musik di Radio"] = 16;
+    commandString["mendengarkan musik di radio"] = 16;
     change[16].hygieneChange = 0;
     change[16].energyChange = -5;
     change[16].funChange = 10;
-    commandString["Membaca Koran"] = 17;
+    commandString["membaca koran"] = 17;
     change[17].hygieneChange = 0;
     change[17].energyChange = -5;
     change[17].funChange = 5;
-    commandString["Membaca Novel"] = 18;
+    commandString["membaca novel"] = 18;
     change[18].hygieneChange = 0;
     change[18].energyChange = -5;
     change[18].funChange = 10;
 }
 
 void inverseValidCommand () {
-    stringCommand[1] = "Tidur Siang";
-    stringCommand[2] = "Tidur Malam";
-    stringCommand[3] = "Makan Hamburger";
-    stringCommand[4] = "Makan Pizza";
-    stringCommand[5] = "Makan Steak and Beans";
-    stringCommand[6] = "Minum Air";
-    stringCommand[7] = "Minum Kopi";
-    stringCommand[8] = "Minum Jus";
-    stringCommand[9] = "Buang Air Kecil";
-    stringCommand[10] = "Buang Air Besar";
-    stringCommand[11] = "Bersosialisasi ke Kafe";
-    stringCommand[12] = "Bermain Media Sosial";
-    stringCommand[13] = "Bermain Komputer";
-    stringCommand[14] = "Mandi";
-    stringCommand[15] = "Cuci Tangan";
-    stringCommand[16] = "Mendengarkan Musik di Radio";
-    stringCommand[17] = "Membaca Koran";
-    stringCommand[18] = "Membaca Novel";
+    stringCommand[1] = "tidur siang";
+    stringCommand[2] = "tidur malam";
+    stringCommand[3] = "makan hamburger";
+    stringCommand[4] = "makan pizza";
+    stringCommand[5] = "makan steak and beans";
+    stringCommand[6] = "minum air";
+    stringCommand[7] = "minum kopi";
+    stringCommand[8] = "minum jus";
+    stringCommand[9] = "buang air kecil";
+    stringCommand[10] = "buang air besar";
+    stringCommand[11] = "bersosialisasi ke kafe";
+    stringCommand[12] = "bermain media sosial";
+    stringCommand[13] = "bermain komputer";
+    stringCommand[14] = "mandi";
+    stringCommand[15] = "cuci tangan";
+    stringCommand[16] = "mendengarkan musik di radio";
+    stringCommand[17] = "membaca koran";
+    stringCommand[18] = "membaca novel";
 }
 
 bool isActionValid(state current, transition x){
@@ -187,6 +187,23 @@ bool IsStateEqual (state player, state player1) {
 
 bool IsFinalState (state player) {
     return (IsStateEqual(player, playerState[0]) || IsStateEqual(player,playerState[63]));
+}
+
+char toLower(char k){
+    if(k >= 'A' && k <= 'Z'){
+        return k - 'A' + 'a';
+    } else {
+        return k;
+    }
+}
+
+string stringToLower(string s){
+    int len = s.length();
+    for(int i = 0; i < len; i++){
+        s[i] = toLower(s[i]);
+    }
+
+    return s;
 }
 
 
