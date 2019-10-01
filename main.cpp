@@ -169,7 +169,6 @@ void doTransition(state * player, transition x){
         showStatus(*player);
     } else {
         cout << "Aksi tidak valid" << endl;
-        showStatus(*player);
     }
 }
 
@@ -250,10 +249,14 @@ int main() {
         cout << "Masukkan aksi : ";
         getline(cin, str);
         str = stringToLower(str);
-        doTransition(&player, change[commandString[str]]);
+        if(commandString.find(str)==commandString.end()){
+            cout << "Aksi tidak valid" << endl;
+        } else {
+            doTransition(&player, change[commandString[str]]);
+        }
     }
     if (IsStateEqual(player,playerState[0])) {
-        cout << "Mati jir" << endl;
+        cout << "" << endl;
     }
     else if (IsStateEqual(player,playerState[63])) {
         cout << "Masuk surga, gan!" << endl;
