@@ -8,6 +8,7 @@
 **/
 #include <bits/stdc++.h>
 #include <string>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -168,6 +169,7 @@ void doTransition(state * player, transition x){
         showStatus(*player);
     } else {
         cout << "Aksi tidak valid" << endl;
+        showStatus(*player);
     }
 }
 
@@ -178,10 +180,13 @@ int getCurrentState(state player){
     return getIndex(a, b, c);
 }
 
+
+bool IsStateEqual (state player, state player1) {
+    return (player.energy == player1.energy && player.fun == player1.fun && player.hygiene == player1.hygiene);
+}
+
 bool IsFinalState (state player) {
-    bool a = (player.energy == playerState[0].energy && player.fun == playerState[0].fun && player.hygiene == playerState[0].hygiene);
-    bool b = (player.energy == playerState[63].energy && player.fun == playerState[63].fun && player.hygiene == playerState[63].hygiene);
-    return (a || b);
+    return (IsStateEqual(player, playerState[0]) || IsStateEqual(player,playerState[63]));
 }
 
 
@@ -191,9 +196,11 @@ int main() {
     generateState();
     generateValidCommand();
     inverseValidCommand();
+    system("CLS");
     cout << "Selamat datang di The Sims Simulator. Pertama-tama, siapa namamu?" << endl;
-    cout << "Nama :";
+    cout << "Nama : ";
     getline(cin,nama);
+    system("CLS");
     cout << "Halo, selamat datang " << nama << "!" << endl;
     /*for (int i = 0;i<=63;i++) {
         cout << "q" << i << " " << playerState[i].hygiene << " " << playerState[i].energy << " " << playerState[i].fun << endl ;
@@ -221,11 +228,17 @@ int main() {
     player.energy = 10;
     player.fun = 0;
     showStatus(player);
-    cout << "Ah, enaknya habis bangunt tidur. Enaknya ngapain ya?" << endl;
+    cout << "Ah, enaknya habis bangun tidur. Enaknya ngapain ya?" << endl;
     while (!IsFinalState(player)) {
         cout << "Masukkan aksi : ";
         getline(cin, str);
         doTransition(&player, change[commandString[str]]);
+    }
+    if (IsStateEqual(player,playerState[0])) {
+        cout << "Mati jir" << endl;
+    }
+    else if (IsStateEqual(player,playerState[63])) {
+        cout << "Masuk surga, gan!" << endl;
     }
     return 0;
 }
